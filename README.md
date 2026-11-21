@@ -8,7 +8,8 @@ no intl, no gettext, no network at runtime.
   French departments below their regions).
 - Plain PHP arrays, loaded once per process and kept in shared memory by
   opcache.
-- Generated from pinned, checksummed sources: Debian iso-codes and Unicode CLDR.
+- Generated from pinned, checksummed sources: Debian iso-codes and Unicode CLDR;
+  the generator ships with the package.
 
 ## Installation
 
@@ -52,21 +53,35 @@ the list, for example `(new Collator('de_DE'))->sort(...)` from ext-intl.
 
 ## Names
 
-- **English** names are the names of Debian iso-codes, which follow
-  ISO 3166-2. These are often the local names: `Bayern`, not `Bavaria`.
+- **English** names come from Unicode CLDR (`Bavaria`, `Beijing`). Where CLDR
+  has none, or where its key stands for another subdivision than ISO 3166-2
+  today (Iran, the regions of Morocco, `UG-331`; listed in
+  `tools/sources.php`), the name of Debian iso-codes is used, which follows
+  ISO 3166-2 and is often the local name. With CLDR 49 and iso-codes v4.20.1:
+  5,002 from CLDR, 44 from iso-codes.
 - **German** names are the German translations of Debian iso-codes. Where an
   entry is not translated or marked as fuzzy, the name comes from Unicode CLDR;
-  where CLDR has none either, the English name is used. With iso-codes v4.20.1
-  and CLDR 49: 4,856 from iso-codes, 184 from CLDR, 6 English.
+  where CLDR has none either, the name of Debian iso-codes is used. With
+  iso-codes v4.20.1 and CLDR 49: 4,856 from iso-codes, 184 from CLDR, 6 from
+  the ISO names.
+- CLDR marks some names as provisional, and a few are short forms
+  (`RU-YEV` is `Jewish`). They are taken as they are.
 
 ## Updating the data
 
 The sources are pinned with version and SHA-256 in `tools/sources.php`:
 
 1. Change the version, empty the `sha256` of the files of that source.
-2. Run `composer generate`; it prints the new hashes and stops.
-3. Check the files against the release, paste the hashes, run
-   `composer generate` again and review the diff in `data/`.
+2. Run `composer generate` (or `php tools/generate.php`); it prints the new
+   hashes and stops.
+3. Check the files against the release, paste the hashes, run the generator
+   again and review the diff in `data/`. For a new CLDR release, check that
+   its keys still stand for the same subdivisions as the ISO codes, and adjust
+   `skip` in `tools/sources.php`.
+
+The generator needs no Composer autoloader, so it also runs from an installed
+copy of the package. A data file that did not change keeps the date in its
+header.
 
 ## Development
 
@@ -84,5 +99,6 @@ and the **Unicode License v3** for CLDR. See [NOTICE](NOTICE) and
 
 In short, as we read the licenses: you may use and ship the package in any
 project, open or closed. The LGPL covers only the data files: if you
-distribute changed data files, they stay under the LGPL. This is not legal
-advice.
+distribute changed data files, they stay under the LGPL, must say that and
+when you changed them, and must come with the means to rebuild them (here:
+`tools/`). This is not legal advice.

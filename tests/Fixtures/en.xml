@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ldml SYSTEM "../../common/dtd/ldml.dtd">
+<ldml>
+	<identity>
+		<version number="$Revision$"/>
+		<language type="en"/>
+	</identity>
+	<localeDisplayNames>
+		<subdivisions>
+			<subdivision type="cy06">Kyrenia</subdivision>
+			<subdivision type="deby">Bavaria</subdivision>
+			<subdivision type="fr01">Ain</subdivision>
+			<subdivision type="frara">Auvergne-Rhône-Alpes</subdivision>
+		</subdivisions>
+	</localeDisplayNames>
+</ldml>

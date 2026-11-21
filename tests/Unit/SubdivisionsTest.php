@@ -56,6 +56,19 @@ final class SubdivisionsTest extends TestCase
     {
         self::assertSame('Kalifornien', new Subdivisions('de')->get('US-CA')?->name);
         self::assertSame('California', new Subdivisions('en')->get('us-ca')?->name);
+        self::assertSame('Bavaria', new Subdivisions('en')->get('DE-BY')?->name);
+        self::assertSame('Bayern', new Subdivisions('de')->get('DE-BY')?->name);
+    }
+
+    #[Test]
+    public function itKeepsTheIsoNameWhereCldrUsesAKeyForAnotherSubdivision(): void
+    {
+        $english = new Subdivisions('en');
+
+        self::assertSame('Qom', $english->get('IR-25')?->name);
+        self::assertSame('Gīlān', $english->get('IR-01')?->name);
+        self::assertSame('Guelmim-Oued Noun (EH-partial)', $english->get('MA-10')?->name);
+        self::assertSame('Omoro', $english->get('UG-331')?->name);
     }
 
     #[Test]

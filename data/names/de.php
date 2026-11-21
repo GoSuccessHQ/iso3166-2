@@ -4,11 +4,21 @@ declare(strict_types=1);
 
 // ISO 3166-2 subdivision names in German: translations of iso_3166-2/de.po; where missing or fuzzy,
 // names from Unicode CLDR release-49 common/subdivisions/de.xml (https://github.com/unicode-org/cldr),
-// licensed under Unicode-3.0 (see LICENSES/Unicode-3.0.txt); else the English name.
+// licensed under Unicode-3.0 (see LICENSES/Unicode-3.0.txt), Copyright © 2001–2026 Unicode, Inc.;
+// else the name of data/iso_3166-2.json.
 // Data from Debian iso-codes v4.20.1 (https://salsa.debian.org/iso-codes-team/iso-codes),
 // licensed under LGPL-2.1-or-later (see LICENSES/LGPL-2.1-or-later.txt).
-// Modified by GoSuccess GmbH: converted to PHP arrays by tools/generate.php; the dates of changes
-// are in the Git history of this file. Do not edit; changes are lost on the next run.
+// SPDX-FileCopyrightText of data/iso_3166-2.json: 2016 Dr. Tobias Quathamer <toddy@debian.org>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2012 Hendrik Knackstedt <hendrik.knackstedt@t-online.de>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2014 Mario Blättermann <mario.blaettermann@gmail.com>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2012-2023 Dr. Tobias Quathamer <toddy@debian.org>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2022 Helge Kreutzmann <debian@helgefjell.de>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2020 J. Lavoie <j.lavoie@net-c.ca>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2020 Serge Karpesh <skarpiesz@gmail.com>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2022 Nathan Schimmoller <nschimmo@gmail.com>
+// SPDX-FileCopyrightText of iso_3166-2/de.po: 2025 Serhii Horichenko <serhii@horichenko.com>
+// Modified by GoSuccess GmbH on 2026-11-21: converted to PHP arrays by tools/generate.php from the
+// pinned sources in tools/sources.php. Do not edit; changes are lost on the next run.
 
 return [
     'AD-02' => 'Canillo',

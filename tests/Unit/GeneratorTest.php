@@ -75,6 +75,44 @@ final class GeneratorTest extends TestCase
     }
 
     #[Test]
+    public function itPrefersCldrForEnglishThenTheIsoName(): void
+    {
+        $codes = Generator::parseIsoCodes($this->fixture('iso_3166-2.json'));
+        $result = Generator::names($codes, [], Generator::parseCldr($this->fixture('en.xml')));
+
+        self::assertSame('Bavaria', $result['names']['DE-BY']);
+        self::assertSame('Kyrenia', $result['names']['CY-06']);
+        self::assertSame('In Salah', $result['names']['DZ-53']);
+        self::assertSame(['iso' => 3, 'translation' => 0, 'cldr' => 4], $result['sources']);
+    }
+
+    #[Test]
+    public function itSkipsCldrNamesOfSingleCodesAndWholeCountries(): void
+    {
+        $cldr = Generator::parseCldr($this->fixture('en.xml'));
+
+        self::assertSame(['cy06' => 'Kyrenia', 'frara' => 'Auvergne-Rhône-Alpes'], Generator::withoutCodes($cldr, ['DE', 'FR-01']));
+        self::assertSame($cldr, Generator::withoutCodes($cldr, []));
+    }
+
+    #[Test]
+    public function itRejectsAnInvalidCodeToSkip(): void
+    {
+        $this->expectException(RuntimeException::class);
+
+        Generator::withoutCodes([], ['deby']);
+    }
+
+    #[Test]
+    public function itReadsTheCopyrightLinesOfACatalog(): void
+    {
+        self::assertSame(
+            ['2012 First Translator <first@example.org>', '2012-2023 Second Translator <second@example.org>'],
+            Generator::parsePoCopyrights($this->fixture('de.po')),
+        );
+    }
+
+    #[Test]
     public function itExportsLoadablePhp(): void
     {
         $codes = Generator::parseIsoCodes($this->fixture('iso_3166-2.json'));

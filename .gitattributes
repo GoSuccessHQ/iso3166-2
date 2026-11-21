@@ -2,9 +2,9 @@
 * text=auto eol=lf
 
 # Exclude development-only files from the Composer (dist) package.
+# tools/ ships on purpose: it rebuilds data/ from its sources (LGPL-2.1, see NOTICE).
 /.github           export-ignore
 /tests             export-ignore
-/tools             export-ignore
 /.gitattributes    export-ignore
 /.gitignore        export-ignore
 /composer.lock     export-ignore

@@ -1,4 +1,8 @@
+# Translation of ISO 3166-2 to German
 # SPDX-License-Identifier: LGPL-2.1-or-later
+# .
+# SPDX-FileCopyrightText: 2012 First Translator <first@example.org>
+# SPDX-FileCopyrightText: 2012-2023 Second Translator <second@example.org>
 msgid ""
 msgstr ""
 "Language: de\n"

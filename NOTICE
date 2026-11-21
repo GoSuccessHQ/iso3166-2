@@ -10,22 +10,31 @@ licenses. It is not relicensed under MIT.
 1. Debian iso-codes v4.20.1
    https://salsa.debian.org/iso-codes-team/iso-codes
    Files: data/iso_3166-2.json, iso_3166-2/de.po
-   Used for: all codes, types and parents (data/subdivisions.php), all English
-   names (data/names/en.php) and most German names (data/names/de.php).
+   Used for: all codes, types and parents (data/subdivisions.php), English
+   names that CLDR lacks (data/names/en.php) and most German names
+   (data/names/de.php).
    License: GNU Lesser General Public License, version 2.1 or later
    (LICENSES/LGPL-2.1-or-later.txt).
-   Copyright: the iso-codes contributors, as listed in the source files.
+   Copyright: data/iso_3166-2.json 2016 Dr. Tobias Quathamer; the
+   translators of iso_3166-2/de.po as listed in the header of
+   data/names/de.php.
 
 2. Unicode Common Locale Data Repository (CLDR), release 49
    https://github.com/unicode-org/cldr
-   File: common/subdivisions/de.xml
-   Used for: German names that Debian iso-codes does not translate or marks
-   as fuzzy (data/names/de.php).
+   Files: common/subdivisions/en.xml, common/subdivisions/de.xml
+   Used for: most English names (data/names/en.php) and German names that
+   Debian iso-codes does not translate or marks as fuzzy
+   (data/names/de.php).
    License: Unicode License v3 (LICENSES/Unicode-3.0.txt).
-   Copyright © 1991-2025 Unicode, Inc.
+   Copyright © 2001–2026 Unicode, Inc.
 
-The data files were changed only in form: converted to PHP arrays by
-tools/generate.php, which also states which source each German name comes
-from. The dates of changes are in the Git history. To rebuild them, run
-`composer generate`; the sources are pinned with their SHA-256 in
-tools/sources.php.
+Changes: the data files are a modified version of these sources, changed by
+GoSuccess GmbH. tools/generate.php converts them to PHP arrays, picks one
+name per subdivision and language from the sources above, and skips CLDR
+names whose key stands for another subdivision than in ISO 3166-2 today
+(listed in tools/sources.php). The header of each data file states its
+sources and the date of its last change. Nothing else is changed.
+
+Source: tools/ ships with the package. `php tools/generate.php` downloads the
+sources pinned with version and SHA-256 in tools/sources.php and rebuilds
+data/ exactly; the data files themselves are readable PHP.

@@ -3,11 +3,12 @@
 declare(strict_types=1);
 
 // ISO 3166-2 subdivisions: code => [type, parent code], grouped by country.
-// Converted from data/iso_3166-2.json to PHP arrays; names are in data/names/.
+// Codes, types and parents of data/iso_3166-2.json; names are in data/names/.
 // Data from Debian iso-codes v4.20.1 (https://salsa.debian.org/iso-codes-team/iso-codes),
 // licensed under LGPL-2.1-or-later (see LICENSES/LGPL-2.1-or-later.txt).
-// Modified by GoSuccess GmbH: converted to PHP arrays by tools/generate.php; the dates of changes
-// are in the Git history of this file. Do not edit; changes are lost on the next run.
+// SPDX-FileCopyrightText of data/iso_3166-2.json: 2016 Dr. Tobias Quathamer <toddy@debian.org>
+// Modified by GoSuccess GmbH on 2026-11-21: converted to PHP arrays by tools/generate.php from the
+// pinned sources in tools/sources.php. Do not edit; changes are lost on the next run.
 
 return [
     'AD' => [

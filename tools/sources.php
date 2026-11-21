@@ -27,6 +27,22 @@ return [
                 'url' => 'https://raw.githubusercontent.com/unicode-org/cldr/{version}/common/subdivisions/de.xml',
                 'sha256' => '7cb92c1ba2bcc2a8f14210c4adc4534260637aacdeeeb7a821fe5a989842b178',
             ],
+            'en.xml' => [
+                'url' => 'https://raw.githubusercontent.com/unicode-org/cldr/{version}/common/subdivisions/en.xml',
+                'sha256' => '637705773cb923d63bf71abaf05e6246fd853ef98f143bd9796b11d2c5ac10c0',
+            ],
+        ],
+        /*
+         * Codes whose CLDR key names a different subdivision than ISO 3166-2 today, checked for
+         * release-49: CLDR keeps the old numbering of Iran and the 16 former regions of Morocco,
+         * and reuses `ug331` for Zombo. These names come from iso-codes instead. Review this list
+         * with every new CLDR release.
+         */
+        'skip' => [
+            'IR',
+            'MA-01', 'MA-02', 'MA-03', 'MA-04', 'MA-05', 'MA-06',
+            'MA-07', 'MA-08', 'MA-09', 'MA-10', 'MA-11', 'MA-12',
+            'UG-331',
         ],
     ],
 ];

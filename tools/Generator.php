@@ -152,8 +152,50 @@ final class Generator
     }
 
     /**
+     * Drops CLDR names whose keys do not match the current ISO 3166-2 codes.
+     *
+     * CLDR keeps some codes that ISO has renumbered or reused (Iran, the regions of Morocco), so
+     * the same key names a different subdivision there. An entry is a full code (`MA-01`) or a
+     * country (`IR`) for all its codes.
+     *
+     * @param array<string, string> $cldr From {@see self::parseCldr()}.
+     * @param list<string> $codes
+     * @return array<string, string>
+     */
+    public static function withoutCodes(array $cldr, array $codes): array
+    {
+        foreach ($codes as $code) {
+            if (preg_match('/\A[A-Z]{2}(-[A-Z0-9]{1,3})?\z/', $code) !== 1) {
+                throw new RuntimeException("Invalid code to skip in CLDR: {$code}");
+            }
+
+            $key = strtolower(str_replace('-', '', $code));
+
+            if (\strlen($code) === 2) {
+                $cldr = array_filter($cldr, static fn(string $cldrKey): bool => !str_starts_with($cldrKey, $key), \ARRAY_FILTER_USE_KEY);
+            } else {
+                unset($cldr[$key]);
+            }
+        }
+
+        return $cldr;
+    }
+
+    /**
+     * Reads the copyright lines of a gettext catalog of Debian iso-codes, to keep them with the data.
+     *
+     * @return list<string> The `SPDX-FileCopyrightText` values, in file order.
+     */
+    public static function parsePoCopyrights(string $po): array
+    {
+        preg_match_all('/^# SPDX-FileCopyrightText: (.+)$/m', str_replace("\r\n", "\n", $po), $matches);
+
+        return array_map(trim(...), $matches[1]);
+    }
+
+    /**
      * Picks the name of every subdivision in one language: the translation of Debian iso-codes,
-     * else CLDR, else the ISO name.
+     * else CLDR, else the ISO name. For English, pass no translations: CLDR first, then the ISO name.
      *
      * @param array<string, array{name: string, type: string, parent: string|null}> $isoCodes
      * @param array<string, string> $translations From {@see self::parsePo()}; empty for English.
