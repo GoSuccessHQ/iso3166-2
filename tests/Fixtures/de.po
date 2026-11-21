@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: LGPL-2.1-or-later
+msgid ""
+msgstr ""
+"Language: de\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#. Name for AG-03, Name for BB-03
+msgid "Saint George"
+msgstr "Saint George"
+
+#. Name for CY-06
+msgid "Keryneia"
+msgstr ""
+
+#. Name for DE-BY
+msgid "Bayern"
+msgstr ""
+"Bay"
+"ern \"Freistaat\""
+
+#. Name for DZ-53
+#, fuzzy
+msgid "In Salah"
+msgstr "In Saleh"
+
+#~ msgid "Old"
+#~ msgstr "Alt"

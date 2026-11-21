@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ldml SYSTEM "../../common/dtd/ldml.dtd">
+<ldml>
+	<identity>
+		<version number="$Revision$"/>
+		<language type="de"/>
+	</identity>
+	<localeDisplayNames>
+		<subdivisions>
+			<subdivision type="cy06" draft="provisional">Bezirk Kyrenia</subdivision>
+			<subdivision type="deby" draft="provisional">Bayern (CLDR)</subdivision>
+			<subdivision type="dz53" alt="variant">Variante</subdivision>
+		</subdivisions>
+	</localeDisplayNames>
+</ldml>

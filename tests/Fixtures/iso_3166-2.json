@@ -1,0 +1,11 @@
+{
+  "3166-2": [
+    {"code": "FR-ARA", "name": "Auvergne-Rhône-Alpes", "type": "Metropolitan region"},
+    {"code": "FR-01", "name": "Ain", "parent": "ARA", "type": "Metropolitan department"},
+    {"code": "DE-BY", "name": "Bayern", "type": "Land"},
+    {"code": "AG-03", "name": "Saint George", "type": "Parish"},
+    {"code": "BB-03", "name": "Saint George", "type": "Parish"},
+    {"code": "CY-06", "name": "Keryneia", "type": "District"},
+    {"code": "DZ-53", "name": "In Salah", "type": "Province"}
+  ]
+}

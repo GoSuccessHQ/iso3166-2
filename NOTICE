@@ -1,0 +1,31 @@
+gosuccess/iso3166-2
+Copyright (c) 2026 GoSuccess GmbH
+
+The code in src/, tools/ and tests/ is licensed under the MIT License
+(LICENSE, LICENSES/MIT.txt).
+
+The data in data/ is generated from third-party sources and keeps their
+licenses. It is not relicensed under MIT.
+
+1. Debian iso-codes v4.20.1
+   https://salsa.debian.org/iso-codes-team/iso-codes
+   Files: data/iso_3166-2.json, iso_3166-2/de.po
+   Used for: all codes, types and parents (data/subdivisions.php), all English
+   names (data/names/en.php) and most German names (data/names/de.php).
+   License: GNU Lesser General Public License, version 2.1 or later
+   (LICENSES/LGPL-2.1-or-later.txt).
+   Copyright: the iso-codes contributors, as listed in the source files.
+
+2. Unicode Common Locale Data Repository (CLDR), release 49
+   https://github.com/unicode-org/cldr
+   File: common/subdivisions/de.xml
+   Used for: German names that Debian iso-codes does not translate or marks
+   as fuzzy (data/names/de.php).
+   License: Unicode License v3 (LICENSES/Unicode-3.0.txt).
+   Copyright © 1991-2025 Unicode, Inc.
+
+The data files were changed only in form: converted to PHP arrays by
+tools/generate.php, which also states which source each German name comes
+from. The dates of changes are in the Git history. To rebuild them, run
+`composer generate`; the sources are pinned with their SHA-256 in
+tools/sources.php.

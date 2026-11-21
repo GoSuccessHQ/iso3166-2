@@ -1,0 +1,67 @@
+{
+    "name": "gosuccess/iso3166-2",
+    "description": "Dependency-free ISO 3166-2 country subdivisions with English and German names for PHP.",
+    "type": "library",
+    "license": "(MIT AND LGPL-2.1-or-later)",
+    "keywords": [
+        "iso",
+        "iso3166",
+        "iso-3166-2",
+        "subdivisions",
+        "regions",
+        "states",
+        "provinces",
+        "i18n"
+    ],
+    "homepage": "https://github.com/GoSuccessHQ/iso3166-2",
+    "readme": "README.md",
+    "authors": [
+        {
+            "name": "GoSuccess GmbH",
+            "homepage": "https://gosuccess.io"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/GoSuccessHQ/iso3166-2/issues",
+        "source": "https://github.com/GoSuccessHQ/iso3166-2"
+    },
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^13.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "GoSuccess\\Iso3166\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GoSuccess\\Iso3166\\Tests\\": "tests/",
+            "GoSuccess\\Iso3166\\Tools\\": "tools/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse --memory-limit=2G",
+        "cs": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "generate": "php tools/generate.php",
+        "check": [
+            "@cs",
+            "@stan",
+            "@test"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "8.4.1"
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
